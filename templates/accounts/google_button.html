@@ -1,0 +1,20 @@
+{% load socialaccount %}
+
+<!-- Google Login/Signup Button Template -->
+{% get_providers as socialaccount_providers %}
+{% for provider in socialaccount_providers %}
+  {% if provider.id == "google" %}
+    <div class="mb-3">
+      <a href="{% provider_login_url 'google' %}" class="btn btn-danger w-100 mb-3">
+        <i class="fab fa-google me-2"></i>{{ button_text|default:"Continue with Google" }}
+      </a>
+    </div>
+  {% endif %}
+{% empty %}
+  <!-- Fallback when Google OAuth is not configured -->
+  <div class="mb-3">
+    <button class="btn btn-danger w-100 mb-3" disabled title="Google OAuth not configured">
+      <i class="fab fa-google me-2"></i>{{ button_text|default:"Continue with Google" }} (Setup Required)
+    </button>
+  </div>
+{% endfor %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <div class="card shadow-lg p-5">
+        <h1 class="mb-3">👋 Welcome to Kareem.Elnokali Site!</h1>
+        <p class="lead mb-4">Sign up and get started.</p>
+        <div class="d-flex justify-content-center gap-3 mb-3">
+          <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
+          <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

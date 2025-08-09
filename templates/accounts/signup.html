@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4">
+        <h2 class="mb-2 text-center">Create Your Account</h2>
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">{{ form.non_field_errors|striptags }}</div>
+        {% endif %}
+        <!-- Google Sign Up Button -->
+        {% include 'accounts/google_button.html' with button_text="Sign up with Google" %}
+        
+        <div class="text-center mb-3">
+        </div>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="mb-3">
+              <label class="form-label">{{ field.label }}</label>
+              {{ field }}
+              {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+              {% if field.errors %}
+                <div class="text-danger small">{{ field.errors|striptags }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-success w-100">Sign Up</button>
+        </form>
+        <div class="mt-3 text-center">
+          <span>Already have an account?</span> <a href="{% url 'login' %}">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4 text-center">
+        <div class="avatar bg-primary text-white rounded-circle mx-auto mb-3" style="width:80px; height:80px; line-height:80px; font-size:2.5rem;">
+          {{ user.username|first|upper }}
+        </div>
+        <h2 class="mb-2">Hello, {{ user.username }}!</h2>
+        <p class="lead">Welcome to your profile page. You’re logged in and ready to go!</p>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger mt-3">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
